@@ -1,11 +1,10 @@
 Linux leap second test
- # README 
- #              by: Prem Karat (pkarat@mvista.com)
- #              (C) Copyright MontaVista 2015
- #              Licensed under the GPL
- #
- # WARNING: THIS WILL LIKELY HARDHANG SYSTEMS AND MAY LOSE DATA
- # RUN AT YOUR OWN RISK!
+               by: Prem Karat (pkarat@mvista.com)
+               (C) Copyright MontaVista 2015
+               Licensed under the GPL
+ 
+  WARNING: THIS WILL LIKELY HARDHANG SYSTEMS AND MAY LOSE DATA
+  RUN AT YOUR OWN RISK!
 
 This README has
     1. Test suite contents
