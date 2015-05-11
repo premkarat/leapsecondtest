@@ -19,6 +19,15 @@
  *
  *   WARNING: THIS WILL LIKELY HARDHANG SYSTEMS AND MAY LOSE DATA
  *   RUN AT YOUR OWN RISK!
+ *
+ * Original Author: robertkarbowski
+ * This program (sls.c) is modified with following changes
+ *         a. The default time is changed to 120 seconds instead of 600
+ *            to suit the test execution needs and reduce the test exec
+ *            time
+ *         b. Also it has a fix to the bug reported here
+ *            https://github.com/AmadeusITGroup/NTP-Proxy/issues/7
+ *         c. Some cosmetic changes for pretty looking code :-)
  */
 
 
@@ -35,13 +44,13 @@
 #include <getopt.h>
 
 
-// Number of seconds before midnight
+/* Number of seconds before midnight */
 time_t bmidnight=120; 
-// Insert leap second
+/* Insert leap second */
 int ls=STA_INS;
-// Print LS status only
+/* Print LS status only */
 bool STATUS=false;    
-// Max number of digits for delay (incl. trailing null byte)
+/* Max number of digits for delay (incl. trailing null byte) */
 #define NRLENGTH 10   
 
 /* Print usage message */
@@ -145,9 +154,9 @@ void pparam(int argc, char** argv) {
 int main(int argc, char** argv) {
 	struct timeval tv;
 	struct timex tx;
-    // Parse parameters
+    /* Parse parameters */
     pparam(argc, argv);
-    // Print leap second flag status and exit
+    /* Print leap second flag status and exit */
     if(STATUS) {
         pstatus();
         exit(0);
@@ -159,16 +168,16 @@ int main(int argc, char** argv) {
         usage();
         exit(1);
     }
-    // Current time
+    /* Current time */
     gettimeofday(&tv, NULL);
-    // Next leap second
+    /* Next leap seconda*/
     tv.tv_sec +=86400 - tv.tv_sec % 86400;
-    // Set the time to be 'bmidnight' seconds before midnight
+    /* Set the time to be 'bmidnight' seconds before midnight */
     tv.tv_sec -=bmidnight;
     settimeofday(&tv, NULL);
     /* clear time state before setting flag */
     clear_time_state();
-    // Set leap second flag 
+    /* Set leap second flag */
     tx.modes=ADJ_STATUS;
     tx.status=ls;
     if(adjtimex(&tx) == -1) {
