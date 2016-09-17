@@ -21,8 +21,8 @@ echo "Creating a ntp server configuration";
 cp ntpserver.conf /etc/ntp.conf;
 cp leap-seconds.list /var/log;
 
-echo "Setting date to Jun 30 23:00:00 UTC 2015";
-date -s "Jun 30 23:00:00 UTC 2015";
+echo "Setting date to Dec 31 23:00:00 UTC 2016";
+date -s "Dec 31 23:00:00 UTC 2016";
 
 echo "Starting NTP service";
 /etc/init.d/ntpd start;

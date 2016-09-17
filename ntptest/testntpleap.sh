@@ -37,10 +37,10 @@ echo "statistics loopstats" >> /etc/ntp.conf;
 echo "filegen loopstats file loopstats type day enable" >> /etc/ntp.conf;
 echo "server $server" >> /etc/ntp.conf;
 
-# Setting date to Jun 30 23:00:00 UTC 2015
-date -s "Jun 30 23:00:00 UTC 2015" > /dev/null 2>&1;
+# Setting date to Dec 31 23:00:00 UTC 2016
+date -s "Dec 31 23:00:00 UTC 2016" > /dev/null 2>&1;
 if [ $? -ne 0 ]; then
-    echo -e "\t[FAILED]: Failed to set date to June 30 23:00:00 2015" \
+    echo -e "\t[FAILED]: Failed to set date to Dec 31 23:00:00 2016" \
             | tee -a logs/testntpleap.log;
     mv /etc/ntp.conf.bak /etc/ntp.conf >/dev/null 2>&1;
     exit 1;
